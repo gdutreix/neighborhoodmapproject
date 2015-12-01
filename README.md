@@ -5,7 +5,7 @@ address filtering and API connections to Foursquare
 
 ## How To Run This Project
 
-Open the index.html file in your favorite browser to run
+Clone the repo or download from github and open the index.html file to run.
 
 ## How do I use this?
 
