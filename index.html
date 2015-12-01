@@ -1,0 +1,47 @@
+<!DOCTYPE>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Cigar Shops in Metro New Orleans">
+        <meta name="author" content="Gregory Dutreix">
+        <title>Cigar Shops in New Orleans</title>
+        <!-- Bootstrap core CSS -->
+        <link href="vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/css/app.css" rel="stylesheet">
+        <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row no-gutter">
+
+                <div class="col-md-2 gd-sidebar">
+                    <h1 class="heading">New Orleans Cigar Shops</h1>
+                    <div class="form-group">
+                        <input type="text"  class="form-control search" data-bind="value: query, valueUpdate: 'afterkeydown'" placeholder="Search">
+                    </div>
+                    <!-- sort alphabetically -->
+                    <ul class="location-list" data-bind="foreach: filteredLocations().sort(function(l,r) { return l.name > r.name ? 1 : -1})">
+                        <li data-bind="click: $parent.revealMarker"><div class="fakelink location-list-name" data-bind="text: name"></div><div class="location-list-street" data-bind="text: street"></div></li>
+                    </ul>
+                </div>
+                <div class="col-md-10">
+                    <div id="map-canvas"></div>
+                </div>
+            </div>
+        </div>
+        <script src="assets/js/config/config.js"></script>
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendors/knockoutjs/knockout-3.4.0.js"></script>
+        <script async src="https://maps.googleapis.com/maps/api/js?callback=loadApp" onerror="googleFail()"></script>
+        <script src="assets/js/app/app.js"></script>
+
+    </body>
+</html>
