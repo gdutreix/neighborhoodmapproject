@@ -22,9 +22,11 @@
             <div class="row no-gutter">
 
                 <div class="col-md-2 gd-sidebar">
-                    <h1 class="heading">New Orleans Cigar Shops</h1>
-                    <div class="form-group">
-                        <input type="text"  class="form-control search" data-bind="value: query, valueUpdate: 'afterkeydown'" placeholder="Search">
+                    <div class="search-box">
+                        <h1 class="heading">New Orleans Cigar Shops</h1>
+                        <div class="form-group">
+                            <input type="text"  class="form-control search" data-bind="value: query, valueUpdate: 'afterkeydown'" placeholder="Search">
+                        </div>
                     </div>
                     <!-- sort alphabetically -->
                     <ul class="location-list" data-bind="foreach: filteredLocations().sort(function(l,r) { return l.name > r.name ? 1 : -1})">
