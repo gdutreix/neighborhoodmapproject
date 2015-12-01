@@ -4,6 +4,7 @@ var map;
 function loadApp() {
 
     $(window).resize(function() {
+        setHeight();
         google.maps.event.trigger(map, "resize");
     });
 
@@ -16,6 +17,8 @@ function loadApp() {
             $('#map-canvas').height(h - (searchh + listh));
         }
     }
+
+    setHeight();
 
     /* map is configured via the data in config.js and bound to #map-canvas     */
     map = new google.maps.Map(document.getElementById("map-canvas"), {
@@ -50,6 +53,14 @@ function loadApp() {
                 return "<p><strong>" + location.name + "</strong></p><div>Error in retrieving Foursquare API Data</div>";
             }
 
+            var ajaxTimeout = setTimeout(function() {
+                var infowindow = new google.maps.InfoWindow({
+                    content: getInfoWindowErrorText(location)
+                });
+                location.infowindow = infowindow;
+            }, 1000);
+
+
             $.ajax({
                 url: "https://api.foursquare.com/v2/venues/" + location.venueId + '?client_id=' + CLIENT_ID + '&client_secret=' + CLIENT_SECRET + '&v=20130815',
                 method: "GET",
@@ -59,14 +70,8 @@ function loadApp() {
                         content: getInfoWindowText(results.response.venue)
                     });
                     location.infowindow = infowindow;
-                },
-                error: function(e) {
-                    var infowindow = new google.maps.InfoWindow({
-                        content: getInfoWindowErrorText(location)
-                    });
-                    location.infowindow = infowindow;
+                    clearTimeout(ajaxTimeout);
                 }
-
             });
         };
 
