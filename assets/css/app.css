@@ -19,7 +19,7 @@ body {
 .search {
     width:90%;
     display:block;
-    margin:0px auto;
+    margin:0 auto;
 }
 
 .fakelink {
@@ -33,7 +33,7 @@ body {
 }
 
 .location-list {
-    margin:10px 0px 0px 0px;
+    margin:10px 0 0 0;
     padding:0px;
     list-style-type:none;
 }
@@ -59,8 +59,8 @@ body {
 h1 {
     font-weight:bold;
     font-size:18px;
-    margin:0px;
-    padding:0px 0px 10px 0px;
+    margin:0;
+    padding:0 0 10px 0;
     text-align:center;
 }
 

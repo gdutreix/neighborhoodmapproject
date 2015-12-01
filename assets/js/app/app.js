@@ -3,12 +3,18 @@ var map;
 // callback to load app after successful google api load
 function loadApp() {
 
-    // resize map if on mobile device to prevent unnecessary scrolling
-    if ($(window).width() <= 992) {
-        var h = $(window).height();
-        var searchh = 83; // height of title and searchbar
-        var listh = 84; // height of visible list
-        $('#map-canvas').height(h - (searchh + listh));
+    $(window).resize(function() {
+        google.maps.event.trigger(map, "resize");
+    });
+
+    function setHeight() {
+        // resize map if on mobile device at breakpoint to prevent unnecessary scrolling
+        if ($(window).width() <= 992) {
+            var h = $(window).height();
+            var searchh = 83; // height of title and searchbar
+            var listh = 84; // height of visible list
+            $('#map-canvas').height(h - (searchh + listh));
+        }
     }
 
     /* map is configured via the data in config.js and bound to #map-canvas     */
